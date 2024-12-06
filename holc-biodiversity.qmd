@@ -2,6 +2,8 @@
 title: "Exploring patterns of environmental justice"
 author: "Josephine Cardelle"
 format: html
+editor_options: 
+  chunk_output_type: console
 ---
 
 ### Load packages
