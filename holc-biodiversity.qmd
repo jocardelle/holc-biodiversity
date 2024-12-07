@@ -15,6 +15,10 @@ editor_options:
   chunk_output_type: console
 ---
 
+## About
+
+Redlining refers to a practice by the Home Owners' Loan Corporation(HOLC) that dates back to the 1930's. The HOLC would rate neighborhoods (A, B, C, or D) by "residential security" in various American cities. In this analysis we will explore the effects of redlining on health, economy, and environment today.
+
 ### Load packages
 
 ```{r, echo = T, results = 'hide'}
@@ -32,7 +36,7 @@ library(testthat)
 
 Here, we will create a map showing the various HOLC grades in LA counties. We will then use visualizations to summarize the current conditions of these counties based on the variables percent low income, percentile for Particulate Matter 2.5, and percentile for low life expectancy. We will use the mean value in each county for these visualizations
 
-### Import Data
+### Import data
 
 ```{r, echo = T, results = 'hide'}
 # Read in data
@@ -58,7 +62,7 @@ if(st_crs(la_ej) != st_crs(la_red)){
 
 ```
 
-### Visualize Data
+### Visualize data
 
 ```{r}
 
@@ -91,7 +95,7 @@ red_cbg <- st_join(la_ej, la_red, join = st_intersects, left = FALSE)
 percent_holc <- red_cbg %>%
 group_by(grade) %>%
 summarise(count = n()) %>%
-mutate(percent = (count / sum(count))*100 ) %>% 
+mutate(percent = round((count / sum(count))*100, 2)) %>% 
 select(-count) %>% 
 st_drop_geometry()
 
@@ -147,7 +151,7 @@ ggplot(holc_ej_means, aes(x = grade,
 
 The results showed the highest values for % low income, percentile for PM 2.5, and percentile for low life expectancy in HOLC grade D. The lowest for all three variables was shown in HOLC grade A. This shows extreme inequalities in the different grades in economy, environment, and health.
 
-## Legacy of redlining in biodiversity observations
+## Effects of redlining on biodiversity
 
 Next, we'll analyze the effects redlining has had on biodiversity. We'll specifically explore the differences in bird observations in 2022 in each HOLC grade.
 
@@ -178,7 +182,7 @@ red_birds <- st_join(x = la_red, y = birds_22, join = st_intersects, left = FALS
 birds_percent <- red_birds %>%
 group_by(grade) %>%
 summarise(count = n()) %>%
-mutate(percent = (count / sum(count))*100 ) %>% 
+mutate(percent = round((count / sum(count))*100, 2)) %>% 
 select(-count) %>% 
 st_drop_geometry()
 
@@ -198,16 +202,19 @@ labs(x = "HOLC grade",
   ggtitle("Bird Observations in Redlined Neighborhoods in 2022")
 
 
-birds_percent_area <- red_birds %>%
+birds_count_area <- red_birds %>%
   mutate(area_km2 = as.numeric(st_area(geometry)/1e6)) %>% 
   group_by(grade)  %>% 
   summarise(
     total_area_km2 = sum(area_km2, na.rm = TRUE),
     grade_count = n()) %>%
-  mutate(birds_per_km2 = (grade_count/total_area_km2)) %>%
+  mutate(birds_per_km2 = round((grade_count/total_area_km2), 2)) %>%
+  select(-c(grade_count, total_area_km2)) %>% 
   st_drop_geometry() 
 
-ggplot(birds_percent_area) +
+kable(birds_count_area, caption = "Bird observations per square kilometer in each HOLC grade")
+
+ggplot(birds_count_area) +
 geom_col(aes(x = grade, 
              y = birds_per_km2, 
              fill = grade)) +
@@ -215,15 +222,15 @@ scale_fill_manual(values = c("#FD151B", "#FFB30F", "#849324", "#437F97")) +
 labs(x = "HOLC grade", 
      y = expression(paste("Bird Observations per ", km^2)), 
      fill = 'HOLC Grade') +
-  ggtitle("Bird Observations by Area")
+  ggtitle("Bird Observations by area in Redlined Neighborhoods in 2022")
 ```
 
-The first results did not match the expected outcomes. According to Ellis-Soto et al. 2023,  previously redlined are often underrepresented in biodiversity data collection. However, the results from this table and graph show that the highest percent of bird observations within redlined neighborhoods in LA County were seen in grade C neighborhoods, followed by grade D, then grade B and A, respectively. However, once we visualized the data based on bird observations per square kilometer, the results better matched the expected outcomes. This visualization showed grade B to have the highest bird observations and grade D to have the lowest.
+The first results did not match the expected outcomes. According to [Ellis-Soto et al.](https://pubmed.ncbi.nlm.nih.gov/37679441/), previously redlined are often underrepresented in biodiversity data collection. However, the results from this table and graph show that the highest percent of bird observations within redlined neighborhoods in LA County were seen in grade C neighborhoods, followed by grade D, then grade B and A, respectively. However, once we visualized the data based on bird observations per square kilometer, the results better matched the expected outcomes. This visualization showed grade B to have the highest bird observations and grade D to have the lowest.
 
-## Data Citations
+## Citations
 
 | Data                                                       | Citation                                                                                                                                                                                                                                                      | Link                                                                                                                                                                |
-|------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|------------------|---------------------------------|---------------------|
 | HOLC Redlining                                             | **Digital Scholarship Lab.** *Redlining Map Data (JSON file).* University of Richmond, Digital Scholarship Lab. Accessed October 17, 2024.                                                                                                                    | <https://dsl.richmond.edu/panorama/redlining/data>                                                                                                                  |
 | Biodiversity Observations                                  | Data from: the Global Biodiversity Information Facility                                                                                                                                                                                                       | <https://www.gbif.org/>                                                                                                                                             |
 | EJScreen: Environmental Justice Screening and Mapping Tool | United States Environmental Protection Agency. 2023. Data from: Geodatabase of National EJScreen Data at the Block Group Level                                                                                                                                | [Geodatabase of National EJScreen Data at the Block Group Level](https://gaftp.epa.gov/EJScreen/2024/2.31_August_useMe/EJScreen_2024_BG_with_AS_CNMI_GU_VI.gdb.zip) |

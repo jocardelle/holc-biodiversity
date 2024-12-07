@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Josephine Cardelle">
-<meta name="dcterms.date" content="2024-12-06">
+<meta name="dcterms.date" content="2024-12-07">
 
 <title>Redlining and its effects on biodiversity in Los Angeles County</title>
 <style>
@@ -81,14 +81,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#load-packages" id="toc-load-packages" class="nav-link active" data-scroll-target="#load-packages">Load packages</a></li>
+  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a>
+  <ul class="collapse">
+  <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages">Load packages</a></li>
+  </ul></li>
   <li><a href="#legacy-of-redlining-in-la-county" id="toc-legacy-of-redlining-in-la-county" class="nav-link" data-scroll-target="#legacy-of-redlining-in-la-county">Legacy of redlining in LA County</a>
   <ul class="collapse">
-  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data">Import Data</a></li>
-  <li><a href="#visualize-data" id="toc-visualize-data" class="nav-link" data-scroll-target="#visualize-data">Visualize Data</a></li>
+  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data">Import data</a></li>
+  <li><a href="#visualize-data" id="toc-visualize-data" class="nav-link" data-scroll-target="#visualize-data">Visualize data</a></li>
   </ul></li>
-  <li><a href="#legacy-of-redlining-in-biodiversity-observations" id="toc-legacy-of-redlining-in-biodiversity-observations" class="nav-link" data-scroll-target="#legacy-of-redlining-in-biodiversity-observations">Legacy of redlining in biodiversity observations</a></li>
-  <li><a href="#data-citations" id="toc-data-citations" class="nav-link" data-scroll-target="#data-citations">Data Citations</a></li>
+  <li><a href="#effects-of-redlining-on-biodiversity" id="toc-effects-of-redlining-on-biodiversity" class="nav-link" data-scroll-target="#effects-of-redlining-on-biodiversity">Effects of redlining on biodiversity</a></li>
+  <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
   </ul>
 </nav>
 </div>
@@ -114,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 6, 2024</p>
+      <p class="date">December 7, 2024</p>
     </div>
   </div>
   
@@ -126,6 +129,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="about" class="level2">
+<h2 class="anchored" data-anchor-id="about">About</h2>
+<p>Redlining refers to a practice by the Home Owners’ Loan Corporation(HOLC) that dates back to the 1930’s. The HOLC would rate neighborhoods (A, B, C, or D) by “residential security” in various American cities. In this analysis we will explore the effects of redlining on health, economy, and environment today.</p>
 <section id="load-packages" class="level3">
 <h3 class="anchored" data-anchor-id="load-packages">Load packages</h3>
 <div class="cell">
@@ -142,11 +148,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
+</section>
 <section id="legacy-of-redlining-in-la-county" class="level2">
 <h2 class="anchored" data-anchor-id="legacy-of-redlining-in-la-county">Legacy of redlining in LA County</h2>
 <p>Here, we will create a map showing the various HOLC grades in LA counties. We will then use visualizations to summarize the current conditions of these counties based on the variables percent low income, percentile for Particulate Matter 2.5, and percentile for low life expectancy. We will use the mean value in each county for these visualizations</p>
 <section id="import-data" class="level3">
-<h3 class="anchored" data-anchor-id="import-data">Import Data</h3>
+<h3 class="anchored" data-anchor-id="import-data">Import data</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -179,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="visualize-data" class="level3">
-<h3 class="anchored" data-anchor-id="visualize-data">Visualize Data</h3>
+<h3 class="anchored" data-anchor-id="visualize-data">Visualize data</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -218,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>percent_holc <span class="ot">&lt;-</span> red_cbg <span class="sc">%&gt;%</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(grade) <span class="sc">%&gt;%</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">percent =</span> (count <span class="sc">/</span> <span class="fu">sum</span>(count))<span class="sc">*</span><span class="dv">100</span> ) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">round</span>((count <span class="sc">/</span> <span class="fu">sum</span>(count))<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="sc">-</span>count) <span class="sc">%&gt;%</span> </span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">st_drop_geometry</span>()</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
@@ -241,23 +248,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">A</td>
-<td style="text-align: right;">7.028804</td>
+<td style="text-align: right;">7.03</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">B</td>
-<td style="text-align: right;">19.395742</td>
+<td style="text-align: right;">19.40</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">C</td>
-<td style="text-align: right;">47.871008</td>
+<td style="text-align: right;">47.87</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">D</td>
-<td style="text-align: right;">21.070758</td>
+<td style="text-align: right;">21.07</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">NA</td>
-<td style="text-align: right;">4.633688</td>
+<td style="text-align: right;">4.63</td>
 </tr>
 </tbody>
 </table>
@@ -334,8 +341,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The results showed the highest values for % low income, percentile for PM 2.5, and percentile for low life expectancy in HOLC grade D. The lowest for all three variables was shown in HOLC grade A. This shows extreme inequalities in the different grades in economy, environment, and health.</p>
 </section>
 </section>
-<section id="legacy-of-redlining-in-biodiversity-observations" class="level2">
-<h2 class="anchored" data-anchor-id="legacy-of-redlining-in-biodiversity-observations">Legacy of redlining in biodiversity observations</h2>
+<section id="effects-of-redlining-on-biodiversity" class="level2">
+<h2 class="anchored" data-anchor-id="effects-of-redlining-on-biodiversity">Effects of redlining on biodiversity</h2>
 <p>Next, we’ll analyze the effects redlining has had on biodiversity. We’ll specifically explore the differences in bird observations in 2022 in each HOLC grade.</p>
 <div class="cell">
 <details class="code-fold">
@@ -372,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>birds_percent <span class="ot">&lt;-</span> red_birds <span class="sc">%&gt;%</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(grade) <span class="sc">%&gt;%</span></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">percent =</span> (count <span class="sc">/</span> <span class="fu">sum</span>(count))<span class="sc">*</span><span class="dv">100</span> ) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">round</span>((count <span class="sc">/</span> <span class="fu">sum</span>(count))<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="sc">-</span>count) <span class="sc">%&gt;%</span> </span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">st_drop_geometry</span>()</span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
@@ -391,19 +398,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">A</td>
-<td style="text-align: right;">15.67568</td>
+<td style="text-align: right;">15.68</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">B</td>
-<td style="text-align: right;">19.41563</td>
+<td style="text-align: right;">19.42</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">C</td>
-<td style="text-align: right;">35.63185</td>
+<td style="text-align: right;">35.63</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">D</td>
-<td style="text-align: right;">29.27684</td>
+<td style="text-align: right;">29.28</td>
 </tr>
 </tbody>
 </table>
@@ -430,24 +437,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>birds_percent_area <span class="ot">&lt;-</span> red_birds <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>birds_count_area <span class="ot">&lt;-</span> red_birds <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">area_km2 =</span> <span class="fu">as.numeric</span>(<span class="fu">st_area</span>(geometry)<span class="sc">/</span><span class="fl">1e6</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grade)  <span class="sc">%&gt;%</span> </span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_area_km2 =</span> <span class="fu">sum</span>(area_km2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">grade_count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">birds_per_km2 =</span> (grade_count<span class="sc">/</span>total_area_km2)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() </span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(birds_percent_area) <span class="sc">+</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> grade, </span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> birds_per_km2, </span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> grade)) <span class="sc">+</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FD151B"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#849324"</span>, <span class="st">"#437F97"</span>)) <span class="sc">+</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"HOLC grade"</span>, </span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Bird Observations per "</span>, km<span class="sc">^</span><span class="dv">2</span>)), </span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">fill =</span> <span class="st">'HOLC Grade'</span>) <span class="sc">+</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Bird Observations by Area"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">birds_per_km2 =</span> <span class="fu">round</span>((grade_count<span class="sc">/</span>total_area_km2), <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(grade_count, total_area_km2)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(birds_count_area, <span class="at">caption =</span> <span class="st">"Bird observations per square kilometer in each HOLC grade"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Bird observations per square kilometer in each HOLC grade</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">grade</th>
+<th style="text-align: right;">birds_per_km2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">0.35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">0.14</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(birds_count_area) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> grade, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> birds_per_km2, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> grade)) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FD151B"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#849324"</span>, <span class="st">"#437F97"</span>)) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"HOLC grade"</span>, </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Bird Observations per "</span>, km<span class="sc">^</span><span class="dv">2</span>)), </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">fill =</span> <span class="st">'HOLC Grade'</span>) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Bird Observations by area in Redlined Neighborhoods in 2022"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -457,10 +498,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The first results did not match the expected outcomes. According to Ellis-Soto et al.&nbsp;2023, previously redlined are often underrepresented in biodiversity data collection. However, the results from this table and graph show that the highest percent of bird observations within redlined neighborhoods in LA County were seen in grade C neighborhoods, followed by grade D, then grade B and A, respectively. However, once we visualized the data based on bird observations per square kilometer, the results better matched the expected outcomes. This visualization showed grade B to have the highest bird observations and grade D to have the lowest.</p>
+<p>The first results did not match the expected outcomes. According to <a href="https://pubmed.ncbi.nlm.nih.gov/37679441/">Ellis-Soto et al.</a>, previously redlined are often underrepresented in biodiversity data collection. However, the results from this table and graph show that the highest percent of bird observations within redlined neighborhoods in LA County were seen in grade C neighborhoods, followed by grade D, then grade B and A, respectively. However, once we visualized the data based on bird observations per square kilometer, the results better matched the expected outcomes. This visualization showed grade B to have the highest bird observations and grade D to have the lowest.</p>
 </section>
-<section id="data-citations" class="level2">
-<h2 class="anchored" data-anchor-id="data-citations">Data Citations</h2>
+<section id="citations" class="level2">
+<h2 class="anchored" data-anchor-id="citations">Citations</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
