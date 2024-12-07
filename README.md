@@ -1,7 +1,7 @@
 # Redlining and its effects on biodiversity in Los Angeles County
 
 ## About
-Redlining refers to a practice by the Home Owners' Loan Corporation(HOLC) that dates back to the 1930's. The HOLC would rate neighborhoods (A - green, B - blue, C- yellow, or D - red) by "residential security" in various American cities. These ratings were often based on racial segregation and would then block access to loans for homeowners ((Gee, G.C.)[https://pmc.ncbi.nlm.nih.gov/articles/PMC1447127/]). In this analysis we will explore the effects of redlining on health, economy, and environment today.
+Redlining refers to a practice by the Home Owners' Loan Corporation(HOLC) that dates back to the 1930's. The HOLC would rate neighborhoods (A - green, B - blue, C- yellow, or D - red) by "residential security" in various American cities. These ratings were often based on racial segregation and would then block access to loans for homeowners ([Gee, G.C.](https://pmc.ncbi.nlm.nih.gov/articles/PMC1447127/)). In this analysis we will explore the effects of redlining on health, economy, and environment today.
 
 
 ## Highlights
