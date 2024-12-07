@@ -17,7 +17,7 @@ editor_options:
 
 ## About
 
-Redlining refers to a practice by the Home Owners' Loan Corporation(HOLC) that dates back to the 1930's. The HOLC would rate neighborhoods (A, B, C, or D) by "residential security" in various American cities. In this analysis we will explore the effects of redlining on health, economy, and environment today.
+Redlining refers to a practice by the Home Owners' Loan Corporation(HOLC) that dates back to the 1930's. The HOLC would rate neighborhoods (A - green, B - blue, C- yellow, or D - red) by "residential security" in various American cities. These ratings were often based on racial segregation and would then block access to loans for homeowners ([Gee, G.C.](https://pmc.ncbi.nlm.nih.gov/articles/PMC1447127/) ). In this analysis we will explore the effects of redlining on health, economy, and environment today.
 
 ### Load packages
 
@@ -74,7 +74,7 @@ tm_shape(ej, bbox = la_red) + # Base map and set bounding box to redline data
 tm_shape(la_red) +
 tm_fill("grade",
         title = "HOLC grade",
-        palette = c("#FD151B", "#FFB30F", "#849324", "#437F97")) +
+        palette = c("#849324","#437F97", "#FFB30F", "#FD151B")) +
   tm_scale_bar(position = c("right", "top")) +
   tm_compass(position = c("right", "top"),
              size = 1.5,
@@ -120,7 +120,7 @@ ggplot(holc_ej_means, aes(x = grade,
                           y = lowincpct, 
                           fill = grade)) +
   geom_col() +
-  scale_fill_manual(values = c("#FD151B", "#FFB30F", "#849324", "#437F97")) +
+  scale_fill_manual(values = c("#849324","#437F97", "#FFB30F", "#FD151B")) +
   labs(x = "HOLC Grade", 
        y = "Percent Low Income", 
        fill = 'HOLC Grade') +
@@ -131,7 +131,7 @@ ggplot(holc_ej_means, aes(x = grade,
                           y = pm25, 
                           fill = grade)) +
   geom_col() +
-  scale_fill_manual(values = c("#FD151B", "#FFB30F", "#849324", "#437F97")) +
+  scale_fill_manual(values = c("#849324","#437F97", "#FFB30F", "#FD151B")) +
   labs(x = "HOLC Grade", 
        y = "Percentile for Particulate Matter 2.5", 
        fill = 'HOLC Grade') +
@@ -141,7 +141,7 @@ ggplot(holc_ej_means, aes(x = grade,
                           y = lifeexppct, 
                           fill = grade)) +
   geom_col() +
-  scale_fill_manual(values = c("#FD151B", "#FFB30F", "#849324", "#437F97")) +
+  scale_fill_manual(values = c("#849324","#437F97", "#FFB30F", "#FD151B")) +
   labs(x = "HOLC Grade", 
        y = "Percentile for Low Life Expectancy", 
        fill = 'HOLC Grade') +
@@ -195,7 +195,7 @@ ggplot(birds_percent) +
 geom_col(aes(x = grade, 
              y = percent, 
              fill = grade)) +
-scale_fill_manual(values = c("#FD151B", "#FFB30F", "#849324", "#437F97")) +
+scale_fill_manual(values = c("#849324","#437F97", "#FFB30F", "#FD151B")) +
 labs(x = "HOLC grade", 
      y = "Percentage of observations", 
      fill = 'HOLC Grade') +
@@ -212,13 +212,13 @@ birds_count_area <- red_birds %>%
   select(-c(grade_count, total_area_km2)) %>% 
   st_drop_geometry() 
 
-kable(birds_count_area, caption = "Bird observations per square kilometer in each HOLC grade")
+kable(birds_count_area,col.names = c("grade", "birds observations per square kilometer"), caption = "Bird observations per square kilometer in each HOLC grade")
 
 ggplot(birds_count_area) +
 geom_col(aes(x = grade, 
              y = birds_per_km2, 
              fill = grade)) +
-scale_fill_manual(values = c("#FD151B", "#FFB30F", "#849324", "#437F97")) +
+scale_fill_manual(values = c("#849324","#437F97", "#FFB30F", "#FD151B")) +
 labs(x = "HOLC grade", 
      y = expression(paste("Bird Observations per ", km^2)), 
      fill = 'HOLC Grade') +
@@ -229,9 +229,10 @@ The first results did not match the expected outcomes. According to [Ellis-Soto 
 
 ## Citations
 
-| Data                                                       | Citation                                                                                                                                                                                                                                                      | Link                                                                                                                                                                |
-|------------------|---------------------------------|---------------------|
-| HOLC Redlining                                             | **Digital Scholarship Lab.** *Redlining Map Data (JSON file).* University of Richmond, Digital Scholarship Lab. Accessed October 17, 2024.                                                                                                                    | <https://dsl.richmond.edu/panorama/redlining/data>                                                                                                                  |
-| Biodiversity Observations                                  | Data from: the Global Biodiversity Information Facility                                                                                                                                                                                                       | <https://www.gbif.org/>                                                                                                                                             |
-| EJScreen: Environmental Justice Screening and Mapping Tool | United States Environmental Protection Agency. 2023. Data from: Geodatabase of National EJScreen Data at the Block Group Level                                                                                                                                | [Geodatabase of National EJScreen Data at the Block Group Level](https://gaftp.epa.gov/EJScreen/2024/2.31_August_useMe/EJScreen_2024_BG_with_AS_CNMI_GU_VI.gdb.zip) |
-| Historical redlining and biodiversity sampling artile      | Ellis-Soto, D., Chapman, M. & Locke, D.H. Historical redlining is associated with increasing geographical disparities in bird biodiversity sampling in the United States. *Nat Hum Behav* **7**, 1869–1877 (2023). https://doi.org/10.1038/s41562-023-01688-5 | <https://www.nature.com/articles/s41562-023-01688-5#citeas>                                                                                                         |
+| Data                                                                                                                   | Citation                                                                                                                                                                                                                                                      | Link                                                                                                                                                                |
+|--------------------|---------------------------------|---------------------|
+| HOLC Redlining                                                                                                         | **Digital Scholarship Lab.** *Redlining Map Data (JSON file).* University of Richmond, Digital Scholarship Lab. Accessed October 17, 2024.                                                                                                                    | <https://dsl.richmond.edu/panorama/redlining/data>                                                                                                                  |
+| Biodiversity Observations                                                                                              | Data from: the Global Biodiversity Information Facility                                                                                                                                                                                                       | <https://www.gbif.org/>                                                                                                                                             |
+| EJScreen: Environmental Justice Screening and Mapping Tool                                                             | United States Environmental Protection Agency. 2023. Data from: Geodatabase of National EJScreen Data at the Block Group Level                                                                                                                                | [Geodatabase of National EJScreen Data at the Block Group Level](https://gaftp.epa.gov/EJScreen/2024/2.31_August_useMe/EJScreen_2024_BG_with_AS_CNMI_GU_VI.gdb.zip) |
+| A multilevel analysis of the relationship between institutional and individual racial discrimination and health status | Gee, G. C. (2008). A multilevel analysis of the relationship between institutional and individual racial discrimination and health status. American journal of public health, 98(Supplement_1), S48-S56                                                       | <https://pmc.ncbi.nlm.nih.gov/articles/PMC1447127/>                                                                                                                 |
+| Historical redlining and biodiversity sampling artile                                                                  | Ellis-Soto, D., Chapman, M. & Locke, D.H. Historical redlining is associated with increasing geographical disparities in bird biodiversity sampling in the United States. *Nat Hum Behav* **7**, 1869–1877 (2023). https://doi.org/10.1038/s41562-023-01688-5 | <https://www.nature.com/articles/s41562-023-01688-5#citeas>                                                                                                         |

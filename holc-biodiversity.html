@@ -131,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="about" class="level2">
 <h2 class="anchored" data-anchor-id="about">About</h2>
-<p>Redlining refers to a practice by the Home Owners’ Loan Corporation(HOLC) that dates back to the 1930’s. The HOLC would rate neighborhoods (A, B, C, or D) by “residential security” in various American cities. In this analysis we will explore the effects of redlining on health, economy, and environment today.</p>
+<p>Redlining refers to a practice by the Home Owners’ Loan Corporation(HOLC) that dates back to the 1930’s. The HOLC would rate neighborhoods (A - green, B - blue, C- yellow, or D - red) by “residential security” in various American cities. These ratings were often based on racial segregation and would then block access to loans for homeowners (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1447127/">Gee, G.C.</a> ). In this analysis we will explore the effects of redlining on health, economy, and environment today.</p>
 <section id="load-packages" class="level3">
 <h3 class="anchored" data-anchor-id="load-packages">Load packages</h3>
 <div class="cell">
@@ -198,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(la_red) <span class="sc">+</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_fill</span>(<span class="st">"grade"</span>,</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"HOLC grade"</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#FD151B"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#849324"</span>, <span class="st">"#437F97"</span>)) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#849324"</span>,<span class="st">"#437F97"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#FD151B"</span>)) <span class="sc">+</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_scale_bar</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"top"</span>)) <span class="sc">+</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_compass</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"top"</span>),</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">1.5</span>,</span>
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> lowincpct, </span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> grade)) <span class="sc">+</span></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FD151B"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#849324"</span>, <span class="st">"#437F97"</span>)) <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#849324"</span>,<span class="st">"#437F97"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#FD151B"</span>)) <span class="sc">+</span></span>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"HOLC Grade"</span>, </span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Percent Low Income"</span>, </span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">'HOLC Grade'</span>) <span class="sc">+</span></span>
@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> pm25, </span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> grade)) <span class="sc">+</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FD151B"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#849324"</span>, <span class="st">"#437F97"</span>)) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#849324"</span>,<span class="st">"#437F97"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#FD151B"</span>)) <span class="sc">+</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"HOLC Grade"</span>, </span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Percentile for Particulate Matter 2.5"</span>, </span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">'HOLC Grade'</span>) <span class="sc">+</span></span>
@@ -324,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> lifeexppct, </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> grade)) <span class="sc">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FD151B"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#849324"</span>, <span class="st">"#437F97"</span>)) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#849324"</span>,<span class="st">"#437F97"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#FD151B"</span>)) <span class="sc">+</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"HOLC Grade"</span>, </span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Percentile for Low Life Expectancy"</span>, </span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">'HOLC Grade'</span>) <span class="sc">+</span></span>
@@ -422,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> grade, </span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> percent, </span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> grade)) <span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FD151B"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#849324"</span>, <span class="st">"#437F97"</span>)) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#849324"</span>,<span class="st">"#437F97"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#FD151B"</span>)) <span class="sc">+</span></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"HOLC grade"</span>, </span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Percentage of observations"</span>, </span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">fill =</span> <span class="st">'HOLC Grade'</span>) <span class="sc">+</span></span>
@@ -447,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(grade_count, total_area_km2)) <span class="sc">%&gt;%</span> </span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() </span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(birds_count_area, <span class="at">caption =</span> <span class="st">"Bird observations per square kilometer in each HOLC grade"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(birds_count_area,<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"grade"</span>, <span class="st">"birds observations per square kilometer"</span>), <span class="at">caption =</span> <span class="st">"Bird observations per square kilometer in each HOLC grade"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -455,7 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th style="text-align: left;">grade</th>
-<th style="text-align: right;">birds_per_km2</th>
+<th style="text-align: right;">birds observations per square kilometer</th>
 </tr>
 </thead>
 <tbody>
@@ -484,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> grade, </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> birds_per_km2, </span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> grade)) <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FD151B"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#849324"</span>, <span class="st">"#437F97"</span>)) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#849324"</span>,<span class="st">"#437F97"</span>, <span class="st">"#FFB30F"</span>, <span class="st">"#FD151B"</span>)) <span class="sc">+</span></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"HOLC grade"</span>, </span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Bird Observations per "</span>, km<span class="sc">^</span><span class="dv">2</span>)), </span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">fill =</span> <span class="st">'HOLC Grade'</span>) <span class="sc">+</span></span>
@@ -527,6 +527,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><a href="https://gaftp.epa.gov/EJScreen/2024/2.31_August_useMe/EJScreen_2024_BG_with_AS_CNMI_GU_VI.gdb.zip">Geodatabase of National EJScreen Data at the Block Group Level</a></td>
 </tr>
 <tr class="even">
+<td>A multilevel analysis of the relationship between institutional and individual racial discrimination and health status</td>
+<td>Gee, G. C. (2008). A multilevel analysis of the relationship between institutional and individual racial discrimination and health status. American journal of public health, 98(Supplement_1), S48-S56</td>
+<td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1447127/" class="uri">https://pmc.ncbi.nlm.nih.gov/articles/PMC1447127/</a></td>
+</tr>
+<tr class="odd">
 <td>Historical redlining and biodiversity sampling artile</td>
 <td>Ellis-Soto, D., Chapman, M. &amp; Locke, D.H. Historical redlining is associated with increasing geographical disparities in bird biodiversity sampling in the United States. <em>Nat Hum Behav</em> <strong>7</strong>, 1869–1877 (2023). https://doi.org/10.1038/s41562-023-01688-5</td>
 <td><a href="https://www.nature.com/articles/s41562-023-01688-5#citeas" class="uri">https://www.nature.com/articles/s41562-023-01688-5#citeas</a></td>
