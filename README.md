@@ -65,4 +65,6 @@ The third dataset we worked with was from the [Global Biodiversity Information F
 
 3. United States Environmental Protection Agency. 2023. Data from: Geodatabase of National EJScreen Data at the Block Group Level
 
-4. Ellis-Soto, D., Chapman, M. & Locke, D.H. Historical redlining is associated with increasing geographical disparities in bird biodiversity sampling in the United States. Nat Hum Behav 7, 1869–1877 (2023). https://doi.org/10.1038/s41562-023-01688-5
+4. Gee, G. C. (2008). A multilevel analysis of the relationship between institutional and individual racial discrimination and health status. American journal of public health, 98(Supplement_1), S48-S56
+
+5. Ellis-Soto, D., Chapman, M. & Locke, D.H. Historical redlining is associated with increasing geographical disparities in bird biodiversity sampling in the United States. Nat Hum Behav 7, 1869–1877 (2023). https://doi.org/10.1038/s41562-023-01688-5
