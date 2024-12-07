@@ -16,6 +16,7 @@
 |    └── unnamed-chunk-4-3.png
 |    └── unnamed-chunk-4-4.png
 |    └── unnamed-chunk-7-1.png
+|    └── unnamed-chunk-7-2.png
 |  └── libs/
 |    └── bootstrap/
 |      └── bootstrap-icons.css
